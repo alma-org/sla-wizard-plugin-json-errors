@@ -102,7 +102,8 @@ Full generation: produces `nginx.conf` (with JSON error pages) and `conf.d/` (wi
 sla-wizard config-nginx-json-errors \
   -o ./output \
   --oas ./specs/oas.yaml \
-  --sla ./specs/sla.yaml
+  --sla ./specs/sla.yaml \
+  --telemeterUrl http://alma-telemeter:2047/internal/rate-limit
 ```
 
 ### `add-to-json-errors-confd`
@@ -127,6 +128,7 @@ sla-wizard add-to-json-errors-confd \
 | `--authLocation <location>` | Auth parameter location: `header`, `query`, or `url` | `header` |
 | `--authName <name>` | Auth parameter name | `apikey` |
 | `--proxyPort <port>` | Port the proxy listens on | `80` |
+| `--telemeterUrl <url>` | alma-telemeter rate-limit endpoint URL (`config-nginx-json-errors` only) | `$TELEMETER_URL` env var, or `http://127.0.0.1:2047/internal/rate-limit` |
 
 ## Programmatic usage
 
@@ -141,6 +143,7 @@ slaWizard.configNginxJsonErrors({
   outDir: './output',
   oas: './specs/oas.yaml',
   sla: './specs/sla.yaml',
+  telemeterUrl: 'http://alma-telemeter:2047/internal/rate-limit', // optional
 });
 
 // conf.d-only generation

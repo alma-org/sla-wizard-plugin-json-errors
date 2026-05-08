@@ -1,3 +1,4 @@
+const { DEFAULT_TELEMETER_URL } = require('sla-wizard-plugin-auth-request-ratelimit');
 const { configNginxJsonErrors, addToJsonErrorsConfd } = require('./src/commands');
 const { applyJsonErrorsToNginxConf, applyJsonErrorTransformations } = require('./src/nginx-transform');
 
@@ -38,6 +39,7 @@ function apply(program, ctx) {
     .option('--authLocation <authLocation>', 'Auth parameter location: header, query, url', 'header')
     .option('--authName <authName>', 'Auth parameter name', 'apikey')
     .option('--proxyPort <proxyPort>', 'Port the proxy listens on', 80)
+    .option('--telemeterUrl <url>', 'alma-telemeter rate-limit endpoint URL', DEFAULT_TELEMETER_URL)
     .action((options) => configNginxJsonErrors(options, ctx));
 
   program

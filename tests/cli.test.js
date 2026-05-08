@@ -64,6 +64,15 @@ describe('config-nginx-json-errors command', () => {
     const content = fs.readFileSync(path.join(outDir, 'nginx.conf'), 'utf8')
     expect(content).toContain('default_type application/json;')
   })
+
+  it('nginx.conf uses custom --telemeterUrl when provided', () => {
+    const customOutDir = path.join(OUT_DIR, 'cli-config-nginx-json-errors-custom-telemeter')
+    execSync(
+      `node "${CLI_PATH}" config-nginx-json-errors -o "${customOutDir}" --oas "${OAS_PATH}" --sla "${SLA_DIR}" --telemeterUrl http://custom-telemeter:9999/rate-limit`,
+    )
+    const content = fs.readFileSync(path.join(customOutDir, 'nginx.conf'), 'utf8')
+    expect(content).toContain('proxy_pass http://custom-telemeter:9999/rate-limit;')
+  })
 })
 
 // ─── add-to-json-errors-confd ─────────────────────────────────────────────────
