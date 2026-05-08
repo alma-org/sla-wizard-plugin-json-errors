@@ -1,0 +1,36 @@
+sla4oas: 1.0.0
+context:
+  id: sla-user2_us_es
+  type: agreement
+  api:
+    $ref: ../oas.yaml
+  provider: ISAGroup
+  customer: ProUser S.L
+  apikeys:
+    - testkey2xyz789ghi012
+  validity:
+    from: '2025-01-01T00:00:00+00:00'
+    to: '2027-01-01T00:00:00+00:00'
+metrics:
+  requests:
+    type: integer
+    format: int64
+    description: Number of requests
+plan:
+  name: pro
+  pricing:
+    cost: 5
+    currency: EUR
+    billing: monthly
+  availability: R/00:00:00Z/23:59:59Z
+  rates:
+    /api/v1/items:
+      get:
+        requests:
+          - max: 10
+            period: minute
+    /api/v1/users:
+      get:
+        requests:
+          - max: 10
+            period: minute
