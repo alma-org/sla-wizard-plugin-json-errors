@@ -5,7 +5,7 @@
   "main": "index.js",
   "author": "Daniel Galván Cancio",
   "scripts": {
-    "test": "vitest run tests/nginx-transform.test.js tests/programmatic.test.js tests/cli.test.js vitest run tests/container.test.js"
+    "test": "vitest run tests"
   },
   "dependencies": {
     "sla-wizard-plugin-auth-request-ratelimit": "^1.0.1"
