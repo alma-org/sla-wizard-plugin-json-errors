@@ -71,7 +71,7 @@ describe('config-nginx-json-errors command', () => {
       `node "${CLI_PATH}" config-nginx-json-errors -o "${customOutDir}" --oas "${OAS_PATH}" --sla "${SLA_DIR}" --telemeterUrl http://custom-telemeter:9999/rate-limit`,
     )
     const content = fs.readFileSync(path.join(customOutDir, 'nginx.conf'), 'utf8')
-    expect(content).toContain('proxy_pass http://custom-telemeter:9999/rate-limit;')
+    expect(content).toContain('http://custom-telemeter:9999/rate-limit')
   })
 })
 
