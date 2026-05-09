@@ -1,6 +1,6 @@
 {
   "name": "sla-wizard-plugin-json-errors",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Plugin that converts all nginx HTML error responses (401, 403, 404, 500, 502, 503, 504) to JSON",
   "main": "index.js",
   "author": "Daniel Galván Cancio",
@@ -8,7 +8,7 @@
     "test": "vitest run tests"
   },
   "dependencies": {
-    "sla-wizard-plugin-auth-request-ratelimit": "^1.0.1"
+    "sla-wizard-plugin-auth-request-ratelimit": "^1.0.2"
   },
   "devDependencies": {
     "sla-wizard": "^1.1.0",
